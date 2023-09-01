@@ -39,9 +39,9 @@ class _TasksState extends State<Tasks> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
-        title: Text(_pages[_selectPageIndex]['title'], style: TextStyle(fontWeight: FontWeight.bold),),
+        title: Text(_pages[_selectPageIndex]['title'] as String, style: TextStyle(fontWeight: FontWeight.bold),),
       ),
-      body: _pages[_selectPageIndex]['page'],
+      body: _pages[_selectPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectedPage,
         currentIndex: _selectPageIndex,

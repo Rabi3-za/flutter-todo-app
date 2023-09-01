@@ -45,13 +45,13 @@ class ListTasks extends StatelessWidget {
                           content: Text(
                               'Do you want to remove the task from the list?'),
                           actions: [
-                            FlatButton(
+                            OutlinedButton(
                               child: Text('No'),
                               onPressed: () {
                                 Navigator.of(ctx).pop(false);
                               },
                             ),
-                            FlatButton(
+                            OutlinedButton(
                               child: Text('Yes'),
                               onPressed: () {
                                 Navigator.of(ctx).pop(true);

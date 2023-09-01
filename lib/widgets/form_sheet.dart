@@ -25,11 +25,11 @@ class _FormSheetState extends State<FormSheet> {
   );
 
   void _saveForm() {
-    final isValid = _form.currentState.validate();
+    final isValid = _form.currentState?.validate() ?? false;
     if (!isValid) {
       return;
     }
-    _form.currentState.save();
+    _form.currentState?.save();
     _addedTasks.id = DateTime.now().toString();
     Provider.of<TasksMng>(context, listen: false).addTask(
       _addedTasks.id,
@@ -80,7 +80,7 @@ class _FormSheetState extends State<FormSheet> {
                       onSaved: (value) {
                         _addedTasks = Task(
                           id: null,
-                          title: value,
+                          title: value ?? '',
                           taskTime: _addedTasks.taskTime,
                           taskDate: _addedTasks.taskDate,
                         );
@@ -111,12 +111,12 @@ class _FormSheetState extends State<FormSheet> {
                           _addedTasks = Task(
                             id: null,
                             title: _addedTasks.title,
-                            taskTime: value,
+                            taskTime: value!,
                             taskDate: _addedTasks.taskDate,
                           );
                         },
                         onTap: () async {
-                          TimeOfDay pickedTime = await showTimePicker(
+                          TimeOfDay? pickedTime = await showTimePicker(
                             context: context,
                             initialTime: TimeOfDay(hour: 12, minute: 0),
                           );
@@ -150,11 +150,11 @@ class _FormSheetState extends State<FormSheet> {
                           id: null,
                           title: _addedTasks.title,
                           taskTime: _addedTasks.taskTime,
-                          taskDate: value,
+                          taskDate: value!,
                         );
                       },
                       onTap: () async {
-                        DateTime pickedDate = await showDatePicker(
+                        DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime.now(),
